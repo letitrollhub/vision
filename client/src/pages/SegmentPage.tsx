@@ -5,7 +5,7 @@
  */
 import { ArrowLeft, ArrowRight, BarChart3, BriefcaseBusiness, CheckCircle2, ClipboardList, Factory, Gauge, LineChart, Network, PieChart, ShieldCheck, Target, Users } from "lucide-react";
 
-const VISION_LOGO = "/manus-storage/Vision-logomarca_a0c5239c.png";
+const VISION_LOGO = "https://visionnovo.manus.space/manus-storage/Vision-logomarca_a0c5239c.png";
 const SEGMENTS_IMAGE = "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=85";
 const PLATFORM_IMAGE = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=85";
 const METHOD_IMAGE = "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1400&q=85";

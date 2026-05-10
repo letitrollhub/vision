@@ -6,8 +6,8 @@
 import { ArrowLeft, ArrowRight, BarChart3, CheckCircle2, ClipboardList, PieChart, Target, Users } from "lucide-react";
 import { useRoute } from "wouter";
 
-const VISION_LOGO = "/manus-storage/Vision-logomarca_a0c5239c.png";
-const HERO_IMAGE = "/manus-storage/hero-gestao-dados_83c8cc00.webp";
+const VISION_LOGO = "https://visionnovo.manus.space/manus-storage/Vision-logomarca_a0c5239c.png";
+const HERO_IMAGE = "https://visionnovo.manus.space/manus-storage/hero-gestao-dados_83c8cc00.webp";
 
 type IconType = typeof Target;
 type Solution = {

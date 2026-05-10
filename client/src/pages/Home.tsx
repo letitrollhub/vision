@@ -23,10 +23,10 @@ import {
   X,
 } from "lucide-react";
 
-const VISION_LOGO = "/manus-storage/Vision-logomarca_a0c5239c.png";
-const HERO_IMAGE = "/manus-storage/hero-gestao-dados_83c8cc00.webp";
-const PLATFORM_IMAGE = "/manus-storage/aigest-plataforma_c4b793be.png";
-const AIGEST_LOGO = "/manus-storage/aigest-logo_e8dcca69.png";
+const VISION_LOGO = "https://visionnovo.manus.space/manus-storage/Vision-logomarca_a0c5239c.png";
+const HERO_IMAGE = "https://visionnovo.manus.space/manus-storage/hero-gestao-dados_83c8cc00.webp";
+const PLATFORM_IMAGE = "https://visionnovo.manus.space/manus-storage/aigest-plataforma_c4b793be.png";
+const AIGEST_LOGO = "https://visionnovo.manus.space/manus-storage/aigest-logo_e8dcca69.png";
 const METHOD_IMAGE = "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1400&q=85";
 
 const navItems = [
@@ -178,15 +178,15 @@ const insightCards = [
 ];
 
 const teamMembers = [
-  { name: "Tainá", image: "/manus-storage/taina_a1792f78.webp" },
-  { name: "Weligton", image: "/manus-storage/weligton_8196c6fb.webp" },
-  { name: "Renato Costa", image: "/manus-storage/renato-costa_dd1da648.webp" },
-  { name: "Marioth", image: "/manus-storage/marioth_678ad519.webp" },
-  { name: "Deborah", image: "/manus-storage/deborah_87a471c9.webp" },
-  { name: "Ricardo", image: "/manus-storage/ricardo_48f1e6c8.webp" },
-  { name: "Filipe", image: "/manus-storage/filipe_44d70f0f.webp" },
-  { name: "Sandro", image: "/manus-storage/sandro_56916d08.webp" },
-  { name: "Lucas", image: "/manus-storage/lucas_ce465012.webp" },
+  { name: "Tainá", image: "https://visionnovo.manus.space/manus-storage/taina_a1792f78.webp" },
+  { name: "Weligton", image: "https://visionnovo.manus.space/manus-storage/weligton_8196c6fb.webp" },
+  { name: "Renato Costa", image: "https://visionnovo.manus.space/manus-storage/renato-costa_dd1da648.webp" },
+  { name: "Marioth", image: "https://visionnovo.manus.space/manus-storage/marioth_678ad519.webp" },
+  { name: "Deborah", image: "https://visionnovo.manus.space/manus-storage/deborah_87a471c9.webp" },
+  { name: "Ricardo", image: "https://visionnovo.manus.space/manus-storage/ricardo_48f1e6c8.webp" },
+  { name: "Filipe", image: "https://visionnovo.manus.space/manus-storage/filipe_44d70f0f.webp" },
+  { name: "Sandro", image: "https://visionnovo.manus.space/manus-storage/sandro_56916d08.webp" },
+  { name: "Lucas", image: "https://visionnovo.manus.space/manus-storage/lucas_ce465012.webp" },
 ];
 
 function scrollToSection(href: string) {
