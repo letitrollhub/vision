@@ -7,13 +7,14 @@ import { type FormEvent, useMemo, useState } from "react";
 import {
   ArrowRight,
   BarChart3,
-  BriefcaseBusiness,
   CheckCircle2,
   ChevronRight,
   ClipboardList,
+  Facebook,
   Factory,
   Gauge,
-  LineChart,
+  Instagram,
+  Linkedin,
   Menu,
   Network,
   PieChart,
@@ -21,13 +22,16 @@ import {
   Target,
   Users,
   X,
+  Youtube,
 } from "lucide-react";
 
 const VISION_LOGO = "https://visionnovo.manus.space/manus-storage/Vision-logomarca_a0c5239c.png";
 const HERO_IMAGE = "https://visionnovo.manus.space/manus-storage/hero-gestao-dados_83c8cc00.webp";
-const PLATFORM_IMAGE = "https://visionnovo.manus.space/manus-storage/aigest-plataforma_c4b793be.png";
+const PLATFORM_IMAGE = "https://visionnovo.manus.space/manus-storage/mockup-aigest_12b2755e.png";
 const AIGEST_LOGO = "https://visionnovo.manus.space/manus-storage/aigest-logo_e8dcca69.png";
 const METHOD_IMAGE = "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1400&q=85";
+const INDUSTRY_SEGMENT_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663178125044/BTpeszDsEuy7ypjMiNFmfk/vision-industria-operacoes-profissional-T8BHMnNTx7yVMGgfoTBYiQ.webp";
+const FOOD_SEGMENT_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663178125044/BTpeszDsEuy7ypjMiNFmfk/vision-alimentos-profissional-5TFaK7vZrJ6iZSBNupR4cy.webp";
 
 const navItems = [
   { label: "Método", href: "#metodo" },
@@ -84,7 +88,7 @@ const methodSteps = [
   { n: "02", title: "Priorizar", text: "Definição dos problemas críticos e dos planos de ação com maior impacto no negócio." },
   { n: "03", title: "Estruturar", text: "Desenho de processos, indicadores, rotinas, pessoas e instrumentos de gestão." },
   { n: "04", title: "Implementar", text: "Acompanhamento próximo para tirar a estratégia do papel e criar execução consistente." },
-  { n: "05", title: "Medir", text: "Monitoramento de resultados por KPIs, plataforma de gestão e ciclos de melhoria." },
+  { n: "05", title: "Medir", text: "Monitoramento de resultados por KPIs, Aigest - Plataforma de Gestão e ciclos de melhoria." },
 ];
 
 const segments = [
@@ -93,9 +97,9 @@ const segments = [
     href: "/segmentos/provedores-e-telecom",
     title: "Provedores e telecom",
     icon: Network,
-    clients: "Net Planet, Network, Conect Mais, GNA Telecom, Veloznet, Sofway, Microrcim",
+    clients: "Smart, NV7, Resolve, Net Planet, Network, MP Telecom, NC Telecon, Conect Mais, Zavaz, Microrcim, Conecta, Sofway, GTBA, Next e Veloznet",
     challenge: "Crescer com atendimento, expansão regional, indicadores, processos técnicos e margem sob controle.",
-    solution: "Estratégia, Processos, Inteligência Financeira e Plataforma de Gestão.",
+    solution: "Estratégia, Processos, Inteligência Financeira e Aigest - Plataforma de Gestão.",
     image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85",
     imageAlt: "Ambiente tecnológico com infraestrutura digital para provedores e telecom",
   },
@@ -104,31 +108,20 @@ const segments = [
     href: "/segmentos/industria-e-operacoes",
     title: "Indústria e operações",
     icon: Factory,
-    clients: "Meira Diesel, Norte de Minas, Extra e clientes industriais a validar",
+    clients: "Meira Diesel e Norte de Minas",
     challenge: "Aumentar produtividade, reduzir custos, documentar rotinas e dar previsibilidade à operação.",
     solution: "Processos Eficazes, Inteligência Financeira e gestão por indicadores.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=85",
-    imageAlt: "Operação industrial com profissionais analisando processos e produtividade",
-  },
-  {
-    id: "servicos",
-    href: "/segmentos/servicos-empresariais",
-    title: "Serviços empresariais",
-    icon: BriefcaseBusiness,
-    clients: "Resolve, Smart, NV7, Faria, MP, MC e demais clientes de serviços a validar",
-    challenge: "Profissionalizar a gestão, organizar lideranças, rotinas, metas e tomada de decisão.",
-    solution: "Estratégia de Negócio, Pessoas Excelentes e Processos Eficazes.",
-    image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1400&q=85",
-    imageAlt: "Equipe de serviços empresariais em reunião de planejamento e atendimento",
+    image: INDUSTRY_SEGMENT_IMAGE,
+    imageAlt: "Ambiente profissional de gestão industrial com indicadores, processos e produtividade",
   },
   {
     id: "saude",
     href: "/segmentos/saude-e-cuidado",
     title: "Saúde e cuidado",
     icon: ShieldCheck,
-    clients: "Clinort, Cuidar e organizações relacionadas a validar",
+    clients: "Clinort, Cuidar e Centro Oftalmológico Norte de Minas",
     challenge: "Padronizar atendimento, gerir equipes, controlar indicadores e melhorar experiência do cliente.",
-    solution: "Processos, Pessoas, Inteligência Financeira e Plataforma.",
+    solution: "Processos, Pessoas, Inteligência Financeira e Aigest - Plataforma de Gestão.",
     image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1400&q=85",
     imageAlt: "Profissional de saúde acompanhando indicadores e atendimento ao paciente",
   },
@@ -137,45 +130,44 @@ const segments = [
     href: "/segmentos/varejo-moveis-e-distribuicao",
     title: "Varejo, móveis e distribuição",
     icon: Gauge,
-    clients: "Diniz, JB Móveis e empresas de varejo a validar",
+    clients: "Diniz, Faria Store e JB Móveis",
     challenge: "Controlar margem, estoque, vendas, atendimento e rotina operacional sem perder velocidade.",
     solution: "Financeiro, Processos e Pessoas com acompanhamento de resultados.",
     image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=85",
     imageAlt: "Ambiente de varejo organizado com gestão de produtos e atendimento",
   },
   {
-    id: "tecnologia",
-    href: "/segmentos/tecnologia-e-negocios-digitais",
-    title: "Tecnologia e negócios digitais",
-    icon: LineChart,
-    clients: "Next, Sofway, NV7 e empresas digitais a validar",
-    challenge: "Alinhar inovação, produto, suporte, comercial e finanças a uma rotina executiva clara.",
-    solution: "Tecnologia, Estratégia, Processos e Indicadores Executivos.",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=85",
-    imageAlt: "Equipe de tecnologia trabalhando em produto digital e gestão de negócios",
-  },
-  {
     id: "alimentos",
     href: "/segmentos/alimentos-e-operacao-recorrente",
-    title: "Alimentos e operação recorrente",
+    title: "Alimentos",
     icon: BarChart3,
-    clients: "Clientes específicos a validar com a Vision",
+    clients: "Uvale, Ayê e Extra Distribuidora de Bebidas",
     challenge: "Estruturar custos, qualidade, padronização, produtividade e decisão baseada em dados.",
-    solution: "Inteligência Financeira, Processos Eficazes e Plataforma de Gestão.",
-    image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1400&q=85",
-    imageAlt: "Operação de alimentos com padronização, qualidade e rotina produtiva",
+    solution: "Inteligência Financeira, Processos Eficazes e Aigest - Plataforma de Gestão.",
+    image: FOOD_SEGMENT_IMAGE,
+    imageAlt: "Ambiente profissional de operação de alimentos com gestão, qualidade e indicadores",
   },
 ];
 
-const clientNames = [
-  "Smart", "Norte de Minas", "NV7", "Resolve", "Net Planet", "Network", "Diniz", "Faria", "JB Móveis", "Clinort", "Cuidar", "Conect Mais", "Zavaz", "Microrcim", "Uvale", "Ayê", "Conecta", "Sofway", "Meira Diesel", "Next", "GNA Telecom", "Veloznet",
+const clientLogos = [
+  { name: "Smart", src: "https://visionnovo.manus.space/manus-storage/smart-color-balanced_d729b13b.png" },
+  { name: "NV7 Telecom", src: "https://visionnovo.manus.space/manus-storage/nv7-color-balanced_5cdd1a1f.png" },
+  { name: "Resolve Telecom", src: "https://visionnovo.manus.space/manus-storage/resolve-color-balanced_0bcb7a37.png" },
+  { name: "Net Planet", src: "https://visionnovo.manus.space/manus-storage/net_planet-color-balanced_e968b625.png" },
+  { name: "Network Telecom", src: "https://visionnovo.manus.space/manus-storage/network-color-balanced_771a2e78.png" },
+  { name: "MP Telecom", src: "https://visionnovo.manus.space/manus-storage/mp_telecom-color-balanced_ea254268.png" },
+  { name: "MC Telecom", src: "https://visionnovo.manus.space/manus-storage/mc_telecom-color-balanced_661c0aa2.png" },
+  { name: "Conecta", src: "https://visionnovo.manus.space/manus-storage/conecta-color-balanced_96fbf0d0.png" },
+  { name: "Microrcim", src: "https://visionnovo.manus.space/manus-storage/microrcim-color-balanced_42902b56.png" },
+  { name: "Norte de Minas", src: "https://visionnovo.manus.space/manus-storage/norte_de_minas-color-balanced_034f51fb.png" },
+  { name: "Clinort", src: "https://visionnovo.manus.space/manus-storage/clinort-color-balanced_3d7d88d0.png" },
+  { name: "Cuidar", src: "https://visionnovo.manus.space/manus-storage/cuidar-color-balanced_5aaa0e32.png" },
+  { name: "Centro Oftalmológico Norte de Minas", src: "https://visionnovo.manus.space/manus-storage/centro_oftalmologico-color-balanced_0298fcde.png" },
+  { name: "Óticas Diniz", src: "https://visionnovo.manus.space/manus-storage/diniz-color-balanced_f6e0ff25.png" },
+  { name: "Faria Store", src: "https://visionnovo.manus.space/manus-storage/faria_store-color-balanced_a0e0266e.png" },
+  { name: "JB Móveis", src: "https://visionnovo.manus.space/manus-storage/jb_moveis-color-balanced_f3e78b8a.png" },
 ];
 
-const insightCards = [
-  "Empresas também precisam de exames regulares.",
-  "Planejamento evita erros caros quando se torna rotina de decisão.",
-  "O mercado de provedores vive um momento que exige gestão profissional.",
-];
 
 const teamMembers = [
   { name: "Tainá", image: "https://visionnovo.manus.space/manus-storage/taina_a1792f78.webp" },
@@ -385,7 +377,7 @@ export default function Home() {
             <div>
               <p className="eyebrow">Soluções por segmento</p>
               <h2 className="section-title mt-4">O visitante encontra rapidamente o contexto do próprio negócio.</h2>
-              <p className="mt-6 text-lg leading-8 text-[#9b9b9b]">Os segmentos foram estruturados a partir dos clientes apresentados no site atual. Alguns enquadramentos devem ser validados internamente antes da publicação final, mas o modelo já está pronto para WordPress.</p>
+              <p className="mt-6 text-lg leading-8 text-[#9b9b9b]">Os segmentos foram estruturados a partir dos clientes apresentados no site atual. A organização por setor facilita a leitura de dores, prioridades e respostas consultivas para cada contexto empresarial.</p>
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 {segments.map((segment) => (
                   <button key={segment.id} onClick={() => setActiveSegment(segment.id)} className={`segment-tab ${activeSegment === segment.id ? "segment-tab-active" : ""}`}>
@@ -402,14 +394,14 @@ export default function Home() {
                   <span className="grid size-12 place-items-center bg-[#373d43] text-[#FFFFFF]"><ActiveIcon className="size-6" /></span>
                   <h3 className="font-display text-3xl font-semibold text-[#373d43]">{currentSegment.title}</h3>
                 </div>
-                <p className="mt-5 text-sm uppercase tracking-[0.22em] text-[#189cd9]">Clientes visíveis / a validar</p>
+                <p className="mt-5 text-sm uppercase tracking-[0.22em] text-[#189cd9]">Clientes</p>
                 <p className="mt-2 leading-7 text-[#9b9b9b]">{currentSegment.clients}</p>
                 <p className="mt-5 text-sm uppercase tracking-[0.22em] text-[#189cd9]">Desafio recorrente</p>
                 <p className="mt-2 leading-7 text-[#373d43]">{currentSegment.challenge}</p>
                 <p className="mt-5 text-sm uppercase tracking-[0.22em] text-[#189cd9]">Resposta Vision</p>
                 <p className="mt-2 font-medium leading-7 text-[#373d43]">{currentSegment.solution}</p>
                 <a href={currentSegment.href} className="mt-6 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-[#189cd9] transition hover:translate-x-1 hover:text-[#373d43]">
-                  Ver página do segmento <ArrowRight className="size-4" />
+                  Soluções no segmento <ArrowRight className="size-4" />
                 </a>
               </article>
             </div>
@@ -420,7 +412,7 @@ export default function Home() {
           <div className="container grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
             <div>
               <div className="mb-6 inline-flex items-center border border-white/15 bg-white/6 px-4 py-3 backdrop-blur">
-                <img src={AIGEST_LOGO} alt="Aigest, plataforma de inteligência em gestão" className="h-8 w-auto max-w-[190px] object-contain opacity-90" />
+                <img src={AIGEST_LOGO} alt="Aigest - Plataforma de Gestão" className="aigest-logo h-8 w-auto max-w-[190px] object-contain opacity-90" />
               </div>
               <p className="eyebrow-dark">Aigest - Plataforma de Gestão</p>
               <h2 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">Organize o presente e molde o futuro com dados integrados.</h2>
@@ -433,7 +425,7 @@ export default function Home() {
             </div>
             <div className="relative">
               <div className="absolute -inset-5 border border-white/10" />
-              <img src={PLATFORM_IMAGE} alt="Tela da plataforma Aigest com indicadores, metas e acompanhamento de KPIs" className="relative aspect-video w-full object-cover object-top shadow-[0_28px_72px_rgba(0,0,0,0.28)]" />
+              <img src={PLATFORM_IMAGE} alt="Mockup da Aigest - Plataforma de Gestão em ambiente de trabalho" className="relative w-full object-contain object-center shadow-[0_28px_72px_rgba(0,0,0,0.28)]" />
               <div className="relative -mt-8 ml-8 max-w-lg bg-[#cbe9f6] p-6 text-[#373d43] shadow-2xl">
                 <p className="font-display text-2xl font-semibold">Tecnologia deve servir à estratégia.</p>
                 <p className="mt-3 leading-7 text-[#9b9b9b]">A plataforma não substitui o método consultivo; ela torna dados, processos e decisões mais visíveis e acompanháveis.</p>
@@ -449,40 +441,27 @@ export default function Home() {
               <h2 className="section-title mt-4">Empresas que decidiram evoluir com a Vision.</h2>
               <p className="mt-6 leading-8 text-[#9b9b9b]">A nova página apresenta clientes por segmento para reforçar identificação e facilitar a leitura de valor por setor.</p>
             </div>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-              {clientNames.map((client) => (
-                <div key={client} className="client-chip">{client}</div>
+            <div className="client-logo-grid">
+              {clientLogos.map((client) => (
+                <div key={client.name} className="client-logo-card" aria-label={client.name}>
+                  <img src={client.src} alt={`Logomarca ${client.name}`} className="client-logo" loading="lazy" />
+                </div>
               ))}
-            </div>
-          </div>
-          <div className="mt-16 grid gap-8 border-t border-[#373d43]/10 pt-14 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
-            <div>
-              <p className="eyebrow">Testemunhal de cliente</p>
-              <h3 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#373d43]">Histórias que transformam negócios</h3>
-              <p className="mt-5 text-lg leading-8 text-[#9b9b9b]">Líderes que decidiram evoluir com a Vision. Conheça empresas que estruturaram sua gestão, alcançaram novos resultados e transformaram seus desafios em crescimento.</p>
-            </div>
-            <div className="overflow-hidden border border-[#373d43]/12 bg-[#373d43] p-3 shadow-[0_24px_70px_rgba(55,61,67,0.16)]">
-              <video className="aspect-video w-full bg-[#373d43] object-cover" controls preload="metadata" playsInline src="https://visionconsultores.com.br/wp-content/uploads/2025/11/Jackson-Smart-V3_menor.mp4">
-                Seu navegador não suporta reprodução de vídeo.
-              </video>
             </div>
           </div>
         </section>
 
         <section className="bg-[#cbe9f6] py-24">
-          <div className="container grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <div className="container grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
             <div>
-              <p className="eyebrow">Conteúdo estratégico</p>
-              <h2 className="section-title mt-4">O site também deve funcionar como ativo de autoridade.</h2>
-              <p className="mt-6 text-lg leading-8 text-[#9b9b9b]">Artigos e insights devem educar empresários, gerar reflexão e reforçar a Vision como referência em gestão, estratégia, finanças, tecnologia e processos.</p>
+              <p className="eyebrow">Testemunhal do Cliente</p>
+              <h3 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-[-0.04em] text-[#373d43]">Histórias que transformam negócios</h3>
+              <p className="mt-5 text-lg leading-8 text-[#6f7780]">Líderes que decidiram evoluir com a Vision. Conheça empresas que estruturaram sua gestão, alcançaram novos resultados e transformaram seus desafios em crescimento.</p>
             </div>
-            <div className="space-y-4">
-              {insightCards.map((insight, index) => (
-                <article key={insight} className="flex gap-5 border border-[#373d43]/12 bg-white p-5">
-                  <span className="font-mono text-sm text-[#189cd9]">0{index + 1}</span>
-                  <p className="font-display text-2xl font-semibold leading-tight text-[#373d43]">{insight}</p>
-                </article>
-              ))}
+            <div className="mx-auto w-full max-w-[390px] overflow-hidden border border-[#373d43]/12 bg-[#373d43] p-3 shadow-[0_24px_70px_rgba(55,61,67,0.16)]">
+              <video className="aspect-[9/16] w-full bg-[#373d43] object-cover" controls preload="metadata" playsInline src="https://visionconsultores.com.br/wp-content/uploads/2025/11/Jackson-Smart-V3_menor.mp4">
+                Seu navegador não suporta reprodução de vídeo.
+              </video>
             </div>
           </div>
         </section>
@@ -574,14 +553,27 @@ export default function Home() {
       </main>
 
       <footer className="border-t border-[#373d43]/10 bg-[#cbe9f6] py-10">
-        <div className="container flex flex-col gap-6 text-sm text-[#9b9b9b] lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex items-center gap-4">
-            <img src={VISION_LOGO} alt="Vision Consultores" className="h-10 w-auto max-w-[150px] object-contain" />
-            <p>Visão, método e decisão.</p>
+        <div className="container flex flex-col gap-7 text-sm text-[#6f7780] lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
+            <div className="flex items-center gap-4">
+              <img src={VISION_LOGO} alt="Vision Consultores" className="h-10 w-auto max-w-[150px] object-contain" />
+              <p>Visão, método e decisão.</p>
+            </div>
+            <div className="flex items-center gap-3" aria-label="Redes sociais da Vision Consultores">
+              <a className="social-link" href="https://www.linkedin.com/company/consultores-vision" target="_blank" rel="noreferrer" aria-label="LinkedIn da Vision Consultores"><Linkedin className="size-4" aria-hidden="true" /></a>
+              <a className="social-link" href="https://www.instagram.com/consultores_vision/" target="_blank" rel="noreferrer" aria-label="Instagram da Vision Consultores"><Instagram className="size-4" aria-hidden="true" /></a>
+              <a className="social-link" href="https://www.facebook.com/consultoresvision" target="_blank" rel="noreferrer" aria-label="Facebook da Vision Consultores"><Facebook className="size-4" aria-hidden="true" /></a>
+              <a className="social-link" href="https://www.youtube.com/@VisionConsultores001" target="_blank" rel="noreferrer" aria-label="YouTube da Vision Consultores"><Youtube className="size-4" aria-hidden="true" /></a>
+            </div>
           </div>
-          <p>Desenvolvido por <a href="https://letitroll.com.br" target="_blank" rel="noreferrer" className="font-semibold text-[#373d43] underline decoration-[#189cd9]/45 underline-offset-4 transition hover:text-[#189cd9]">Let it Roll Agência</a></p>
+          <p>Copyright © 2026 Vision Consultores | Desenvolvido por <a href="https://letitroll.com.br" target="_blank" rel="noreferrer" className="font-semibold text-[#373d43] underline decoration-[#189cd9]/45 underline-offset-4 transition hover:text-[#189cd9]">Let it Roll Agência</a></p>
         </div>
       </footer>
+
+      <a href="https://wa.me/553891319028" target="_blank" rel="noreferrer" className="whatsapp-float" aria-label="Falar com a Vision Consultores pelo WhatsApp">
+        <svg className="size-7" viewBox="0 0 32 32" aria-hidden="true" fill="currentColor"><path d="M16.04 3.2A12.73 12.73 0 0 0 5.15 22.5L3.2 29l6.65-1.86a12.7 12.7 0 0 0 6.18 1.58h.01A12.76 12.76 0 0 0 16.04 3.2Zm7.48 18.05c-.31.88-1.83 1.69-2.57 1.8-.66.1-1.5.14-2.42-.15-.56-.18-1.28-.42-2.2-.82-3.86-1.67-6.38-5.55-6.57-5.81-.19-.25-1.57-2.09-1.57-3.98s.99-2.82 1.34-3.21c.35-.39.76-.49 1.02-.49.25 0 .51 0 .73.01.23.01.55-.09.86.66.31.76 1.08 2.65 1.17 2.84.1.2.16.43.03.68-.13.25-.2.41-.39.63-.19.22-.41.49-.59.66-.2.19-.4.4-.17.79.23.39 1.02 1.68 2.19 2.72 1.5 1.34 2.77 1.76 3.16 1.95.39.2.62.17.85-.1.23-.26.98-1.14 1.24-1.53.26-.39.52-.33.88-.2.36.13 2.29 1.08 2.68 1.27.39.2.65.29.75.45.1.17.1.95-.21 1.83Z" /></svg>
+        <span className="sr-only">Contato via WhatsApp</span>
+      </a>
     </div>
   );
 }

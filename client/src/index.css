@@ -344,8 +344,23 @@
     @apply border-[#189cd9] bg-[#189cd9] text-[#FFFFFF] shadow-[0_10px_22px_rgba(24,156,217,0.16)];
   }
 
-  .client-chip {
-    @apply grid min-h-20 place-items-center rounded-[1.15rem] border border-[#373d43]/12 bg-white px-3 text-center font-display text-lg font-semibold text-[#373d43] shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-[#189cd9]/45 hover:shadow-lg;
+  .client-logo-grid {
+    @apply grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4;
+  }
+
+  .client-logo-card {
+    @apply grid min-h-28 place-items-center rounded-[1.15rem] border border-[#373d43]/10 bg-white px-4 py-5 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-[#189cd9]/45 hover:shadow-lg;
+  }
+
+  .client-logo {
+    @apply h-20 w-full object-contain opacity-100 transition duration-300;
+    max-width: 232px;
+    filter: saturate(1.02) contrast(1.01);
+  }
+
+  .client-logo-card:hover .client-logo {
+    transform: scale(1.035);
+    filter: saturate(1.08) contrast(1.04);
   }
 
   .field-label {
@@ -474,13 +489,31 @@
     }
   }
 
+  .aigest-logo {
+    border-radius: 0 !important;
+  }
+
+  .social-link {
+    @apply inline-grid size-9 place-items-center rounded-full border border-[#373d43]/15 bg-white/65 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#373d43] transition duration-300 hover:-translate-y-0.5 hover:border-[#189cd9] hover:bg-[#189cd9] hover:text-white;
+  }
+
+  .whatsapp-float {
+    @apply fixed bottom-6 right-6 z-[60] inline-grid size-14 place-items-center rounded-full bg-[#25D366] text-white shadow-[0_18px_42px_rgba(37,211,102,0.35)] transition duration-300 hover:-translate-y-1 hover:bg-[#1fb85a] focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2;
+  }
+
+  .whatsapp-glyph {
+    @apply font-display text-lg font-black;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .diagnostic-progress,
     .field-group,
     .field-shell .field,
     .field-check,
     .diagnostic-submit::before,
-    .diagnostic-success {
+    .diagnostic-success,
+    .social-link,
+    .whatsapp-float {
       animation: none !important;
       transition-duration: 1ms !important;
       transform: none !important;
