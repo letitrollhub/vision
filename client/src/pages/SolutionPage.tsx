@@ -3,11 +3,14 @@
  * Modernismo Suíço Executivo: páginas de soluções traduzem cada frente de consultoria em diagnóstico,
  * método, entregáveis e resultados, preservando autoridade sem excesso visual.
  */
-import { ArrowLeft, ArrowRight, BarChart3, CheckCircle2, ClipboardList, PieChart, Target, Users } from "lucide-react";
+import { ArrowLeft, ArrowRight, BarChart3, CheckCircle2, ClipboardList, Facebook, Instagram, Linkedin, PieChart, Target, Users, Youtube } from "lucide-react";
 import { useRoute } from "wouter";
 
 const VISION_LOGO = "https://visionnovo.manus.space/manus-storage/Vision-logomarca_a0c5239c.png";
-const HERO_IMAGE = "https://visionnovo.manus.space/manus-storage/hero-gestao-dados_83c8cc00.webp";
+const STRATEGY_IMAGE = "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=85";
+const PEOPLE_IMAGE = "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=85";
+const PROCESS_IMAGE = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=85";
+const FINANCE_IMAGE = "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=85";
 
 type IconType = typeof Target;
 type Solution = {
@@ -18,6 +21,8 @@ type Solution = {
   intro: string;
   promise: string;
   icon: IconType;
+  image: string;
+  imageAlt: string;
   pillars: { title: string; text: string }[];
   deliverables: string[];
   outcomes: string[];
@@ -33,6 +38,8 @@ const solutions: Solution[] = [
     intro: "A frente de Estratégia de Negócio organiza diagnóstico, planejamento e plano tático para que a empresa deixe de reagir ao mercado e passe a conduzir seu crescimento com método.",
     promise: "O mapa que transforma a visão em realidade.",
     icon: Target,
+    image: STRATEGY_IMAGE,
+    imageAlt: "Executivos em reunião de planejamento estratégico com quadro e prioridades de negócio",
     pillars: [
       { title: "Diagnóstico estratégico", text: "Leitura integrada do modelo de negócio, posicionamento, maturidade de gestão e desafios prioritários." },
       { title: "Planejamento aplicável", text: "Definição de objetivos, metas, indicadores e iniciativas com conexão direta à rotina de decisão." },
@@ -50,6 +57,8 @@ const solutions: Solution[] = [
     intro: "Pessoas Excelentes apoia empresas que precisam alinhar talentos, cultura, responsabilidades e indicadores de desempenho para sustentar crescimento sem depender apenas dos sócios.",
     promise: "Motive e desenvolva o bem mais precioso da empresa.",
     icon: Users,
+    image: PEOPLE_IMAGE,
+    imageAlt: "Equipe corporativa em dinâmica de liderança, cultura e desenvolvimento de pessoas",
     pillars: [
       { title: "Estrutura de papéis", text: "Organização de responsabilidades, liderança e critérios de atuação para reduzir ruídos na execução." },
       { title: "Desenvolvimento de liderança", text: "Apoio à formação de líderes capazes de acompanhar metas, orientar equipes e tomar decisões melhores." },
@@ -67,6 +76,8 @@ const solutions: Solution[] = [
     intro: "Processos Eficazes transforma conhecimento tácito em fluxos documentados, responsabilidades claras e pontos de controle que ajudam a empresa a operar com previsibilidade.",
     promise: "Máximo desempenho operacional com método.",
     icon: ClipboardList,
+    image: PROCESS_IMAGE,
+    imageAlt: "Profissionais acompanhando processos, operação e melhoria contínua em ambiente produtivo",
     pillars: [
       { title: "Mapeamento da operação", text: "Identificação da cadeia de valor, gargalos, retrabalhos, dependências e fluxos críticos." },
       { title: "Padronização inteligente", text: "Documentação de processos, POPs e acordos operacionais sem burocratizar a rotina." },
@@ -84,6 +95,8 @@ const solutions: Solution[] = [
     intro: "Inteligência Financeira organiza a leitura econômica da empresa para que líderes acompanhem margem, fluxo de caixa, metas e investimentos com método e visão de futuro.",
     promise: "Do potencial ao progresso sustentável.",
     icon: PieChart,
+    image: FINANCE_IMAGE,
+    imageAlt: "Análise financeira empresarial com relatórios, orçamento e indicadores de desempenho",
     pillars: [
       { title: "Leitura histórica", text: "Análise de receitas, despesas, margem, caixa e comportamento financeiro para entender padrões e riscos." },
       { title: "Orçamento e metas", text: "Construção de metas financeiras, orçamento e projeções conectadas à realidade operacional." },
@@ -94,10 +107,6 @@ const solutions: Solution[] = [
     closing: "Sem clareza financeira, crescimento pode aumentar complexidade sem gerar resultado. Com método, os números passam a orientar decisões sustentáveis.",
   },
 ];
-
-function scrollToContact() {
-  window.location.href = "/#contato";
-}
 
 export default function SolutionPage() {
   const [, params] = useRoute("/solucoes/:slug");
@@ -125,13 +134,13 @@ export default function SolutionPage() {
               <p className="mt-6 text-2xl font-medium leading-8 text-[#189cd9]">{solution.promise}</p>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-[#373d43]">{solution.headline}</p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <button onClick={scrollToContact} className="btn-primary group">Agendar diagnóstico <ArrowRight className="size-4 transition group-hover:translate-x-1" /></button>
+                <a href="/#contato" className="btn-primary group">Agendar diagnóstico <ArrowRight className="size-4 transition group-hover:translate-x-1" /></a>
                 <a href="/#solucoes" className="btn-secondary">Ver todas as soluções</a>
               </div>
             </div>
             <div className="relative">
               <div className="absolute inset-x-8 top-8 h-full bg-[#373d43]" />
-              <img src={HERO_IMAGE} alt="Indicadores digitais aplicados à gestão empresarial" className="relative aspect-[4/3] w-full object-cover shadow-[0_28px_70px_rgba(55,61,67,0.20)]" />
+              <img src={solution.image} alt={solution.imageAlt} className="relative aspect-[4/3] w-full object-cover shadow-[0_28px_70px_rgba(55,61,67,0.20)]" />
               <div className="absolute bottom-5 left-5 grid size-20 place-items-center bg-[#FFFFFF]/94 text-[#189cd9] shadow-xl backdrop-blur"><Icon className="size-9" /></div>
             </div>
           </div>
@@ -183,11 +192,29 @@ export default function SolutionPage() {
             </div>
             <div className="bg-[#FFFFFF] p-8 sm:p-12">
               <p className="text-lg leading-8 text-[#9b9b9b]">A primeira conversa ajuda a identificar maturidade, prioridades e caminhos práticos para transformar diagnóstico em ação.</p>
-              <button onClick={scrollToContact} className="btn-primary mt-8">Agendar diagnóstico <ArrowRight className="size-4" /></button>
+              <a href="/#contato" className="btn-primary mt-8">Agendar diagnóstico <ArrowRight className="size-4" /></a>
             </div>
           </div>
         </section>
       </main>
+
+      <footer className="border-t border-[#373d43]/10 bg-[#cbe9f6] py-10">
+        <div className="container flex flex-col gap-7 text-sm text-[#6f7780] lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
+            <div className="flex items-center gap-4">
+              <img src={VISION_LOGO} alt="Vision Consultores" className="h-10 w-auto max-w-[150px] object-contain" />
+              <p>Visão, método e decisão.</p>
+            </div>
+            <div className="flex items-center gap-3" aria-label="Redes sociais da Vision Consultores">
+              <a className="social-link" href="https://www.linkedin.com/company/consultores-vision" target="_blank" rel="noreferrer" aria-label="LinkedIn da Vision Consultores"><Linkedin className="size-4" aria-hidden="true" /></a>
+              <a className="social-link" href="https://www.instagram.com/consultores_vision/" target="_blank" rel="noreferrer" aria-label="Instagram da Vision Consultores"><Instagram className="size-4" aria-hidden="true" /></a>
+              <a className="social-link" href="https://www.facebook.com/consultoresvision" target="_blank" rel="noreferrer" aria-label="Facebook da Vision Consultores"><Facebook className="size-4" aria-hidden="true" /></a>
+              <a className="social-link" href="https://www.youtube.com/@VisionConsultores001" target="_blank" rel="noreferrer" aria-label="YouTube da Vision Consultores"><Youtube className="size-4" aria-hidden="true" /></a>
+            </div>
+          </div>
+          <p>Copyright © 2026 Vision Consultores | Desenvolvido por <a href="https://letitroll.com.br" target="_blank" rel="noreferrer" className="font-semibold text-[#373d43] underline decoration-[#189cd9]/45 underline-offset-4 transition hover:text-[#189cd9]">Let it Roll Agência</a></p>
+        </div>
+      </footer>
     </div>
   );
 }
